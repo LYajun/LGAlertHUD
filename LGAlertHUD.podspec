@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "LGAlertHUD"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "提示框,进度条"
 
   # 项目主页地址
@@ -14,8 +14,8 @@ Pod::Spec.new do |s|
  
 
   # 支持平台
-  s.platform     = :ios, "9.0"
-  s.ios.deployment_target = '9.0'
+  s.platform     = :ios, "8.0"
+  s.ios.deployment_target = '8.0'
 
   # 项目的地址
   s.source       = { 

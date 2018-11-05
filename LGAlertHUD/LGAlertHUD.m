@@ -357,10 +357,11 @@ UIColor *LGA_Color(NSInteger hex){
                             blue:((float)(hex & 0xFF))/255.0 alpha:1.0];
 }
 NSString *LG_GETBundleResource(NSString *fileName){
-    NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Frameworks/LGAlertHUD.framework/LGAlertHUD.bundle"];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:bundlePath]) {
-        bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"LGAlertHUD.bundle"];
-    }
+    NSString *bundlePath = [[NSBundle bundleForClass:[LGAlertHUD class]] pathForResource:@"LGAlertHUD" ofType:@"bundle"];
+//    NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Frameworks/LGAlertHUD.framework/LGAlertHUD.bundle"];
+//    if (![[NSFileManager defaultManager] fileExistsAtPath:bundlePath]) {
+//        bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"LGAlertHUD.bundle"];
+//    }
     NSBundle *resoureBundle = [NSBundle bundleWithPath:bundlePath];
     if (resoureBundle && fileName){
         NSString * bundlePath = [[resoureBundle resourcePath] stringByAppendingPathComponent:fileName];
