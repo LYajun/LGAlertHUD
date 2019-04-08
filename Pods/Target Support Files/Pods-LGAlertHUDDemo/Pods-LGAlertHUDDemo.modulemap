@@ -1,0 +1,6 @@
+framework module Pods_LGAlertHUDDemo {
+  umbrella header "Pods-LGAlertHUDDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

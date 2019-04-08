@@ -9,12 +9,15 @@
 #import "LGAlertHUD.h"
 #import "YJAlertView.h"
 #import "LGProgressHUD.h"
+#import <YJExtensions/YJExtensions.h>
+
 @interface LGAlertHUD ()
 {
     LGProgressHUD *_hud;
     NSString *_cancelTitle;
     NSString *_confirmTitle;
 }
+@property (nonatomic,strong) NSBundle *aBundle;
 @end
 @implementation LGAlertHUD
 + (LGAlertHUD *)shareInstance{
@@ -23,8 +26,12 @@
     dispatch_once(&onceToken, ^{
         macro = [[LGAlertHUD alloc]init];
         [macro configure];
+        macro.aBundle = [NSBundle yj_bundleWithCustomClass:LGProgressHUD.class bundleName:@"LGAlertHUD"];
     });
     return macro;
+}
+- (NSBundle *)alertBundle{
+    return _aBundle;
 }
 #pragma mark - public
 - (void)configure{
@@ -358,10 +365,6 @@ UIColor *LGA_Color(NSInteger hex){
 }
 NSString *LG_GETBundleResource(NSString *fileName){
     NSString *bundlePath = [[NSBundle bundleForClass:[LGAlertHUD class]] pathForResource:@"LGAlertHUD" ofType:@"bundle"];
-//    NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Frameworks/LGAlertHUD.framework/LGAlertHUD.bundle"];
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:bundlePath]) {
-//        bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"LGAlertHUD.bundle"];
-//    }
     NSBundle *resoureBundle = [NSBundle bundleWithPath:bundlePath];
     if (resoureBundle && fileName){
         NSString * bundlePath = [[resoureBundle resourcePath] stringByAppendingPathComponent:fileName];

@@ -1,0 +1,7 @@
+platform :ios,'8.0'
+use_frameworks!
+
+target 'LGAlertHUDDemo’ do
+pod 'Masonry'
+pod 'YJExtensions', '1.0.6'
+end

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "LGAlertHUD"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "提示框,进度条"
 
   # 项目主页地址
@@ -24,8 +24,11 @@ Pod::Spec.new do |s|
   }
 
   # 需要包含的源文件
-  s.source_files = "LGAlertHUD/*.{h,m}", "LGAlertHUD/AlertView/*.{h,m}"
+  s.source_files = "LGAlertHUD/*.{h,m}","LGAlertHUD/Lancoo/*.{h,m}"
   
+  s.subspec "AlertView" do |ss|
+    ss.source_files =  "LGAlertHUD/AlertView/*.{h,m}"
+  end
 
    # 资源文件
   s.resources = "LGAlertHUD/LGAlertHUD.bundle"
@@ -33,4 +36,7 @@ Pod::Spec.new do |s|
   # 是否支持ARC 
   s.requires_arc = true
 
+  s.dependency 'Masonry'
+  s.dependency 'YJExtensions'
+  
 end
