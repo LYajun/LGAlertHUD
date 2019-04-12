@@ -376,7 +376,7 @@
         _destructiveBtn.titleLabel.font = [UIFont systemFontOfSize:_btnTitleFontSize];
         [_destructiveBtn setTitleColor:_btnTitleColor forState:UIControlStateNormal];
         _destructiveBtn.backgroundColor = _btnBackgroundColor;
-        [_destructiveBtn addTarget:self action:@selector(destructiveBtn) forControlEvents:UIControlEventTouchUpInside];
+        [_destructiveBtn addTarget:self action:@selector(destructiveAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _destructiveBtn;
 }
