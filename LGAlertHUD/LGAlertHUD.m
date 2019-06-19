@@ -245,6 +245,9 @@
     }
 }
 #pragma mark - HUD
+- (void)setHudTextAttibute{
+    _hud.detailsLabelFont = [UIFont systemFontOfSize:15];
+}
 - (void)showIndeterminate{
     [self showIndeterminateWithStatus:nil];
 }
@@ -258,6 +261,7 @@
     }else{
         _hud.detailsLabelText = @"请稍等...";
     }
+    [self setHudTextAttibute];
 }
 - (void)showSuccessWithStatus:(NSString *)status{
     if (_hud) {
@@ -269,6 +273,7 @@
     UIImage *image = [[UIImage imageNamed:LG_GETBundleResource(@"lg_hud_success")] imageWithRenderingMode:UIImageRenderingModeAutomatic];
     _hud.customView = [[UIImageView alloc] initWithImage:image];
     _hud.detailsLabelText = status;
+    [self setHudTextAttibute];
     [_hud hide:YES afterDelay:2.0f];
 }
 - (void)showErrorWithStatus:(NSString *)status{
@@ -281,6 +286,7 @@
     UIImage *image = [[UIImage imageNamed:LG_GETBundleResource(@"lg_hud_error")] imageWithRenderingMode:UIImageRenderingModeAutomatic];
     _hud.customView = [[UIImageView alloc] initWithImage:image];
     _hud.detailsLabelText = status;
+     [self setHudTextAttibute];
     [_hud hide:YES afterDelay:2.0f];
 }
 - (void)showErrorWithError:(NSError *)error{
@@ -300,6 +306,7 @@
     UIImage *image = [[UIImage imageNamed:LG_GETBundleResource(@"lg_hud_warning")] imageWithRenderingMode:UIImageRenderingModeAutomatic];
     _hud.customView = [[UIImageView alloc] initWithImage:image];
     _hud.detailsLabelText = status;
+     [self setHudTextAttibute];
     [_hud hide:YES afterDelay:2.0f];
 }
 - (void)showStatus:(NSString *)status{
@@ -310,6 +317,7 @@
     _hud.userInteractionEnabled = NO;
     _hud.mode = LGProgressHUDModeText;
     _hud.detailsLabelText = status;
+     [self setHudTextAttibute];
     _hud.yOffset = ([UIScreen mainScreen].bounds.size.height -64)/2 - 100;
     [_hud hide:YES afterDelay:2.0f];
 }
@@ -322,6 +330,7 @@
     _hud.mode = LGProgressHUDModeText;
     _hud.detailsLabelText = status;
     _hud.detailsLabelColor = [UIColor redColor];
+     [self setHudTextAttibute];
     _hud.yOffset = ([UIScreen mainScreen].bounds.size.height -64)/2 - 100;
     [_hud hide:YES afterDelay:2.0f];
 }

@@ -98,7 +98,7 @@
     }];
     
     CGFloat leftOffset = kLancooScreenWidth > 320 ? 30 : 20;
-    CGFloat btnSpace = 30;
+    CGFloat btnSpace = 16;
     CGFloat twoBtnWidth = (kLancooWidth - leftOffset * 2 - btnSpace)/2;
     CGFloat twoBtnHeight = 36;
     [contentView addSubview:self.cancelBtn];
@@ -155,7 +155,7 @@
     CGFloat bottomOffset = 36 + 20;
     CGFloat titleHeight = kLancooHeadImageH/2 + 20;
     CGFloat contentTopOffset = 20;
-    CGFloat contentBottomOffset = 30;
+    CGFloat contentBottomOffset = 30 + 10;
     return topOffset + bottomOffset + titleHeight + contentTopOffset + contentBottomOffset;
 }
 #pragma mark - Public
@@ -176,7 +176,7 @@
 
 + (YJLancooAlert *)lancooAlertWithTitle:(NSString *)title msg:(NSString *)msg cancelTitle:(NSString *)cancelTitle destructiveTitle:(NSString *)destructiveTitle cancelBlock:(void (^)(void))cancelBlock destructiveBlock:(void (^)(void))destructiveBlock{
     YJLancooAlert *alertView = [[YJLancooAlert alloc] init];
-     alertView.cancelBlock = cancelBlock;
+    alertView.cancelBlock = cancelBlock;
     alertView.destructiveBlock = destructiveBlock;
     alertView.contentTextView.hidden = YES;
     alertView.sureBtn.hidden = YES;
@@ -198,9 +198,14 @@
     alertView.cancelBtn.hidden = YES;
     alertView.destructiveBtn.hidden = YES;
     alertView.titleL.text = title;
-    alertView.contentTextView.attributedText = msgAttr;
+    NSMutableAttributedString *attr = msgAttr.mutableCopy;
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 6;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attr.length)];
+    alertView.contentTextView.attributedText = attr;
     [alertView.sureBtn setTitle:sureTitle forState:UIControlStateNormal];
-    CGFloat contentHeight = [msgAttr boundingRectWithSize:CGSizeMake(kLancooWidth-40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
+    CGFloat contentHeight = [attr boundingRectWithSize:CGSizeMake(kLancooWidth-40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
     if (contentHeight > kLancooScreenHeight * 0.3) {
         contentHeight = kLancooScreenHeight * 0.3;
     }
@@ -216,10 +221,15 @@
     alertView.contentL.hidden = YES;
     alertView.sureBtn.hidden = YES;
     alertView.titleL.text = title;
-    alertView.contentTextView.attributedText = msgAttr;
+    NSMutableAttributedString *attr = msgAttr.mutableCopy;
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 6;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attr.length)];
+    alertView.contentTextView.attributedText = attr;
     [alertView.cancelBtn setTitle:cancelTitle forState:UIControlStateNormal];
     [alertView.destructiveBtn setTitle:destructiveTitle forState:UIControlStateNormal];
-    CGFloat contentHeight = [msgAttr boundingRectWithSize:CGSizeMake(kLancooWidth-40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
+    CGFloat contentHeight = [attr boundingRectWithSize:CGSizeMake(kLancooWidth-40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
     if (contentHeight > kLancooScreenHeight * 0.3) {
         contentHeight = kLancooScreenHeight * 0.3;
     }
