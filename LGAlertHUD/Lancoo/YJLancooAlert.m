@@ -72,7 +72,7 @@
     _contentFontSize = 15;
     _contentColor = [UIColor yj_colorWithHex:0x444444];
     
-    _btnBackgroundColor = [UIColor yj_colorWithHex:0x0baffb];
+    _btnBackgroundColor = [UIColor yj_colorWithHex:0x23a1fa];
     _btnTitleColor = [UIColor whiteColor];
     _btnTitleFontSize = 15;
 //    _btnBorderColor = [UIColor yj_colorWithHex:0x1DBDB8];
@@ -108,14 +108,16 @@
         make.width.mas_equalTo(twoBtnWidth);
         make.height.mas_equalTo(twoBtnHeight);
     }];
-    [self.cancelBtn yj_clipLayerWithRadius:twoBtnHeight/2 width:1.5 color:_btnBackgroundColor];
+    self.cancelBtn.layer.borderWidth = 1.5;
+    self.cancelBtn.layer.borderColor = _btnBackgroundColor.CGColor;
+    [self.cancelBtn yj_shadowWithCornerRadius:twoBtnHeight/2 shadowRadius:4 shadowColor:[UIColor yj_colorWithHex:0x00C3F2] opacity:0.5 offset:CGSizeMake(0, 1)];
     
     [contentView addSubview:self.destructiveBtn];
     [self.destructiveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.width.height.equalTo(self.cancelBtn);
         make.left.equalTo(self.cancelBtn.mas_right).offset(btnSpace);
     }];
-    [self.destructiveBtn yj_clipLayerWithRadius:twoBtnHeight/2 width:0 color:nil];
+    [self.destructiveBtn yj_shadowWithCornerRadius:twoBtnHeight/2 shadowRadius:5 shadowColor:[UIColor yj_colorWithHex:0x00C3F2] opacity:0.6 offset:CGSizeMake(0, 2.5)];
     
     [contentView addSubview:self.sureBtn];
     [self.sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -123,7 +125,7 @@
         make.width.equalTo(contentView).multipliedBy(kLancooScreenWidth > 320 ? 0.5 : 0.7);
         make.height.bottom.equalTo(self.cancelBtn);
     }];
-    [self.sureBtn yj_clipLayerWithRadius:twoBtnHeight/2 width:0 color:nil];
+    [self.sureBtn yj_shadowWithCornerRadius:twoBtnHeight/2 shadowRadius:5 shadowColor:[UIColor yj_colorWithHex:0x00C3F2] opacity:0.6 offset:CGSizeMake(0, 2.5)];
 
     
     [contentView addSubview:self.titleL];

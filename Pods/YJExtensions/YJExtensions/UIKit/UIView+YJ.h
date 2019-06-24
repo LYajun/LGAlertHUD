@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, YJShakeDirection) {
                    opacity:(CGFloat)opacity
                     radius:(CGFloat)radius
                     offset:(CGSize)offset;
-
+- (void)yj_shadowWithCornerRadius:(CGFloat)cRadius shadowRadius:(CGFloat)shadowRadius shadowColor:(UIColor *)shadowColor opacity:(CGFloat)opacity offset:(CGSize)offset;
 #pragma mark - Shake
 - (void)yj_shake;
 - (void)yj_shake:(int)times withDelta:(CGFloat)delta;
@@ -54,8 +54,19 @@ typedef NS_ENUM(NSInteger, YJShakeDirection) {
 #pragma mark - Frame
 @property (nonatomic, assign) CGFloat x;
 @property (nonatomic, assign) CGFloat y;
+@property (nonatomic, assign) CGPoint origin;
+@property (nonatomic, assign) CGFloat centerX;
+@property (nonatomic, assign) CGFloat centerY;
+
+
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
+@property (nonatomic, assign) CGSize  size;
+
+@property (nonatomic, assign) CGFloat top;
+@property (nonatomic, assign) CGFloat bottom;
+@property (nonatomic, assign) CGFloat left;
+@property (nonatomic, assign) CGFloat right;
 
 - (BOOL)yj_isIPhoneX;
 - (CGFloat)yj_stateBarSpace;

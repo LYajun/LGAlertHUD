@@ -12,11 +12,11 @@
 
 + (instancetype)yj_bundleWithCustomClass:(Class)customClass bundleName:(NSString *)bundleName{
     
-    static NSBundle *bundle = nil;
-    if (!bundle) {
+//    static NSBundle *bundle = nil;
+//    if (!bundle) {
         // 这里不使用mainBundle是为了适配pod 1.x和0.x
-        bundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:customClass] pathForResource:bundleName ofType:@"bundle"]];
-    }
+      NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:customClass] pathForResource:bundleName ofType:@"bundle"]];
+//    }
     return bundle;
 }
 
