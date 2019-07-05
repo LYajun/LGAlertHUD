@@ -108,25 +108,26 @@
         make.width.mas_equalTo(twoBtnWidth);
         make.height.mas_equalTo(twoBtnHeight);
     }];
-    self.cancelBtn.layer.borderWidth = 1.5;
-    self.cancelBtn.layer.borderColor = _btnBackgroundColor.CGColor;
-    [self.cancelBtn yj_shadowWithCornerRadius:twoBtnHeight/2 shadowRadius:4 shadowColor:[UIColor yj_colorWithHex:0x00C3F2] opacity:0.5 offset:CGSizeMake(0, 1)];
+    
+    
+    [self.cancelBtn yj_shadowWithCornerRadius:twoBtnHeight/2 borderWidth:1.2 borderColor:_btnBackgroundColor shadowColor:[UIColor yj_colorWithHex:0x00C3F2] shadowOpacity:0.4 shadowOffset:CGSizeMake(0, 2.0) roundedRect:CGRectMake(3, 2, twoBtnWidth-6, twoBtnHeight) cornerRadii:CGSizeMake(twoBtnHeight/2, twoBtnHeight/2) rectCorner:UIRectCornerAllCorners];
     
     [contentView addSubview:self.destructiveBtn];
     [self.destructiveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.width.height.equalTo(self.cancelBtn);
         make.left.equalTo(self.cancelBtn.mas_right).offset(btnSpace);
     }];
-    [self.destructiveBtn yj_shadowWithCornerRadius:twoBtnHeight/2 shadowRadius:5 shadowColor:[UIColor yj_colorWithHex:0x00C3F2] opacity:0.6 offset:CGSizeMake(0, 2.5)];
-    
+    [self.destructiveBtn yj_shadowWithCornerRadius:twoBtnHeight/2 borderWidth:0 borderColor:nil shadowColor:[UIColor yj_colorWithHex:0x00C3F2] shadowOpacity:0.5 shadowOffset:CGSizeMake(0, 2.5) roundedRect:CGRectMake(3, 2, twoBtnWidth-6, twoBtnHeight) cornerRadii:CGSizeMake(twoBtnHeight/2, twoBtnHeight/2) rectCorner:UIRectCornerAllCorners];
+   
+     CGFloat sureWidth = (kLancooScreenWidth > 320 ? 0.5 : 0.7)*kLancooWidth;
     [contentView addSubview:self.sureBtn];
     [self.sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(contentView);
         make.width.equalTo(contentView).multipliedBy(kLancooScreenWidth > 320 ? 0.5 : 0.7);
         make.height.bottom.equalTo(self.cancelBtn);
     }];
-    [self.sureBtn yj_shadowWithCornerRadius:twoBtnHeight/2 shadowRadius:5 shadowColor:[UIColor yj_colorWithHex:0x00C3F2] opacity:0.6 offset:CGSizeMake(0, 2.5)];
-
+    
+    [self.sureBtn yj_shadowWithCornerRadius:twoBtnHeight/2 borderWidth:0 borderColor:nil shadowColor:[UIColor yj_colorWithHex:0x00C3F2] shadowOpacity:0.5 shadowOffset:CGSizeMake(0, 2.5) roundedRect:CGRectMake(3, 2, sureWidth-6, twoBtnHeight) cornerRadii:CGSizeMake(sureWidth, twoBtnHeight/2) rectCorner:UIRectCornerAllCorners];
     
     [contentView addSubview:self.titleL];
     [self.titleL mas_makeConstraints:^(MASConstraintMaker *make) {

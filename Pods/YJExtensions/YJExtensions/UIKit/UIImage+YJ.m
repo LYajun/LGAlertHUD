@@ -32,6 +32,114 @@
     return [UIImage animatedImageNamed:[bundle yj_bundlePathWithName:namePath] duration:duration];
 }
 
+
++ (UIImage *)yj_animatedGIFWithData:(NSData *)data {
+    if (!data) {
+        return nil;
+    }
+    
+    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
+    
+    size_t count = CGImageSourceGetCount(source);
+    
+    UIImage *animatedImage;
+    
+    if (count <= 1) {
+        animatedImage = [[UIImage alloc] initWithData:data];
+    }
+    else {
+        NSMutableArray *images = [NSMutableArray array];
+        
+        NSTimeInterval duration = 0.0f;
+        
+        for (size_t i = 0; i < count; i++) {
+            CGImageRef image = CGImageSourceCreateImageAtIndex(source, i, NULL);
+            if (!image) {
+                continue;
+            }
+            
+            duration += [self yj_frameDurationAtIndex:i source:source];
+            
+            [images addObject:[UIImage imageWithCGImage:image scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp]];
+            
+            CGImageRelease(image);
+        }
+        
+        if (!duration) {
+            duration = (1.0f / 10.0f) * count;
+        }
+        
+        animatedImage = [UIImage animatedImageWithImages:images duration:duration];
+    }
+    
+    CFRelease(source);
+    
+    return animatedImage;
+}
+
++ (float)yj_frameDurationAtIndex:(NSUInteger)index source:(CGImageSourceRef)source {
+    float frameDuration = 0.1f;
+    CFDictionaryRef cfFrameProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil);
+    NSDictionary *frameProperties = (__bridge NSDictionary *)cfFrameProperties;
+    NSDictionary *gifProperties = frameProperties[(NSString *)kCGImagePropertyGIFDictionary];
+    
+    NSNumber *delayTimeUnclampedProp = gifProperties[(NSString *)kCGImagePropertyGIFUnclampedDelayTime];
+    if (delayTimeUnclampedProp) {
+        frameDuration = [delayTimeUnclampedProp floatValue];
+    }
+    else {
+        
+        NSNumber *delayTimeProp = gifProperties[(NSString *)kCGImagePropertyGIFDelayTime];
+        if (delayTimeProp) {
+            frameDuration = [delayTimeProp floatValue];
+        }
+    }
+    
+    
+    if (frameDuration < 0.011f) {
+        frameDuration = 0.100f;
+    }
+    
+    CFRelease(cfFrameProperties);
+    return frameDuration;
+}
+
++ (UIImage *)yj_animatedGIFNamed:(NSString *)name atDir:(nonnull NSString *)dir atBundle:(nonnull NSBundle *)bundle{
+    name = [dir stringByAppendingPathComponent:name];
+    CGFloat scale = [UIScreen mainScreen].scale;
+    
+    if (scale > 1.0f) {
+        NSString *retinaPath = [bundle pathForResource:[name stringByAppendingFormat:@"@%.fx",scale] ofType:@"gif"];
+        
+        NSData *data = [NSData dataWithContentsOfFile:retinaPath];
+        
+        if (data) {
+            return [UIImage yj_animatedGIFWithData:data];
+        }
+        
+        NSString *path = [bundle pathForResource:name ofType:@"gif"];
+        
+        data = [NSData dataWithContentsOfFile:path];
+        
+        if (data) {
+            return [UIImage yj_animatedGIFWithData:data];
+        }
+        
+        return [UIImage yj_imageNamed:name atBundle:bundle];
+    }
+    else {
+        NSString *path = [bundle pathForResource:name ofType:@"gif"];
+        
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        
+        if (data) {
+            return [UIImage yj_animatedGIFWithData:data];
+        }
+        
+        return [UIImage yj_imageNamed:name atBundle:bundle];
+    }
+}
+
 #pragma mark - UIView转UIImage
 + (UIImage *)yj_imageWithView:(UIView *)view{
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 0.0);
@@ -52,6 +160,18 @@
     return image;
 }
 #pragma mark - UIImage处理
+-(UIImage *)yj_transformtoSize:(CGSize)Newsize{
+    // 创建一个bitmap的context
+    UIGraphicsBeginImageContext(Newsize);
+    // 绘制改变大小的图片
+    [self drawInRect:CGRectMake(0, 0, Newsize.width, Newsize.height)];
+    // 从当前context中创建一个改变大小后的图片
+    UIImage *TransformedImg=UIGraphicsGetImageFromCurrentImageContext();
+    // 使当前的context出堆栈
+    UIGraphicsEndImageContext();
+    // 返回新的改变大小后的图片
+    return TransformedImg;
+}
 + (UIImage *)yj_fixOrientation:(UIImage *)aImage{
     if (aImage.imageOrientation == UIImageOrientationUp)
         return aImage;

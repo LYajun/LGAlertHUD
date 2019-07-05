@@ -21,6 +21,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[YJLancooAlert lancooAlertWithTitle:@"温馨提示" msg:@"快速减肥环境是" cancelTitle:@"穷在想想" destructiveTitle:@"确定" cancelBlock:^{
+        
+    } destructiveBlock:^{
+        
+    }] show];
     
 }
 

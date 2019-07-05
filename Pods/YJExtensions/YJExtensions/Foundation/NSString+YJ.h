@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)yj_replaceStrongFontWithTextColorHex:(NSString *)textColorHex;
 - (NSString *)yj_htmlImgFrameAdjust;
 + (NSString *)yj_filterHTML:(NSString *)html;
-
++ (BOOL)predicateMatchWithText:(NSString *)text matchFormat:(NSString *)matchFormat;
 #pragma mark - 尺寸
 - (CGFloat)yj_widthWithFont:(UIFont *)font;
 - (CGFloat)yj_heightWithFont:(UIFont *)font;

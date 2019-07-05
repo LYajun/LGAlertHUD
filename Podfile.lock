@@ -1,17 +1,17 @@
 PODS:
   - Masonry (1.1.0)
   - TFHpple (2.0.0)
-  - YJExtensions (1.0.8):
-    - YJExtensions/Foundation (= 1.0.8)
-    - YJExtensions/UIKit (= 1.0.8)
-  - YJExtensions/Foundation (1.0.8):
+  - YJExtensions (1.1.1):
+    - YJExtensions/Foundation (= 1.1.1)
+    - YJExtensions/UIKit (= 1.1.1)
+  - YJExtensions/Foundation (1.1.1):
     - TFHpple
-  - YJExtensions/UIKit (1.0.8):
+  - YJExtensions/UIKit (1.1.1):
     - YJExtensions/Foundation
 
 DEPENDENCIES:
   - Masonry
-  - YJExtensions (= 1.0.8)
+  - YJExtensions (= 1.1.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -22,8 +22,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   TFHpple: a916fe0799eb30aa29b2670d14d5868cdd3a5b81
-  YJExtensions: 3db788fd004eb865bb2d464ce8e71852d8c66933
+  YJExtensions: 74feac415ccd5a0d74559d37fd1a30c46cf3157e
 
-PODFILE CHECKSUM: b2faf0cbebf9666b53d0c2ee5fdca734b33bff6f
+PODFILE CHECKSUM: 044f7a07ab65f4c9ef9dabeb0b43e425d3d9da92
 
 COCOAPODS: 1.7.0.beta.3

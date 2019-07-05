@@ -41,7 +41,8 @@ typedef NS_ENUM(NSInteger, YJShakeDirection) {
                    opacity:(CGFloat)opacity
                     radius:(CGFloat)radius
                     offset:(CGSize)offset;
-- (void)yj_shadowWithCornerRadius:(CGFloat)cRadius shadowRadius:(CGFloat)shadowRadius shadowColor:(UIColor *)shadowColor opacity:(CGFloat)opacity offset:(CGSize)offset;
+
+- (void)yj_shadowWithCornerRadius:(CGFloat)cRadius borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor shadowColor:(UIColor *)shadowColor shadowOpacity:(CGFloat)shadowOpacity shadowOffset:(CGSize)shadowOffset roundedRect:(CGRect)roundedRect cornerRadii:(CGSize)cornerRadii rectCorner:(UIRectCorner)rectCorner;
 #pragma mark - Shake
 - (void)yj_shake;
 - (void)yj_shake:(int)times withDelta:(CGFloat)delta;
