@@ -29,6 +29,7 @@
 		BA7804B5216B07E2000C63A3 /* LGAlertHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7804B4216B07E2000C63A3 /* LGAlertHUD.m */; };
 		BA7804C0216B271B000C63A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7804BD216B271B000C63A3 /* Main.storyboard */; };
 		BA7804C1216B271B000C63A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7804BF216B271B000C63A3 /* ViewController.m */; };
+		BAB887D4231CFF0000899BB6 /* YJKlgEmptyAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB887D3231CFF0000899BB6 /* YJKlgEmptyAlert.m */; };
 		BAF8D5102255B2EB00C8AD58 /* YJLancooAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF8D50F2255B2EB00C8AD58 /* YJLancooAlert.m */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,8 @@
 		BA7804BD216B271B000C63A3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BA7804BE216B271B000C63A3 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BA7804BF216B271B000C63A3 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BAB887D2231CFF0000899BB6 /* YJKlgEmptyAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJKlgEmptyAlert.h; sourceTree = "<group>"; };
+		BAB887D3231CFF0000899BB6 /* YJKlgEmptyAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJKlgEmptyAlert.m; sourceTree = "<group>"; };
 		BAF8D50E2255B2EB00C8AD58 /* YJLancooAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJLancooAlert.h; sourceTree = "<group>"; };
 		BAF8D50F2255B2EB00C8AD58 /* YJLancooAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJLancooAlert.m; sourceTree = "<group>"; };
 		E3C167AEBF22F95E598C48D3 /* Pods_LGAlertHUDDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LGAlertHUDDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +198,8 @@
 			children = (
 				BAF8D50E2255B2EB00C8AD58 /* YJLancooAlert.h */,
 				BAF8D50F2255B2EB00C8AD58 /* YJLancooAlert.m */,
+				BAB887D2231CFF0000899BB6 /* YJKlgEmptyAlert.h */,
+				BAB887D3231CFF0000899BB6 /* YJKlgEmptyAlert.m */,
 			);
 			path = Lancoo;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				BA7804A0216B0643000C63A3 /* YJAlertViewWindow.m in Sources */,
 				BA7804A5216B0643000C63A3 /* YJAlertViewButtonProperties.m in Sources */,
 				BA7804A2216B0643000C63A3 /* YJAlertViewShadowView.m in Sources */,
+				BAB887D4231CFF0000899BB6 /* YJKlgEmptyAlert.m in Sources */,
 				BA7804A9216B0643000C63A3 /* YJAlertViewWindowContainer.m in Sources */,
 				BA7804A6216B0643000C63A3 /* YJAlertView.m in Sources */,
 				BA780449216B05A6000C63A3 /* AppDelegate.m in Sources */,

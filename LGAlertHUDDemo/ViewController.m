@@ -12,6 +12,7 @@
 #import "YJLancooAlert.h"
 #import <YJExtensions/YJExtensions.h>
 #import <Masonry/Masonry.h>
+#import "YJKlgEmptyAlert.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -21,11 +22,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[YJLancooAlert lancooAlertWithTitle:@"温馨提示" msg:@"快速减肥环境是" cancelTitle:@"穷在想想" destructiveTitle:@"确定" cancelBlock:^{
-        
-    } destructiveBlock:^{
-        
-    }] show];
+    
+    [[YJKlgEmptyAlert klgEmptyAlertWithText:@"此知识点正在构建中"] show];
+    
+//    [[YJLancooAlert lancooAlertWithTitle:@"温馨提示" msg:@"快速减肥环境是" cancelTitle:@"穷在想想" destructiveTitle:@"确定" cancelBlock:^{
+//
+//    } destructiveBlock:^{
+//
+//    }] show];
     
 }
 
