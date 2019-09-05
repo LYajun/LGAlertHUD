@@ -14,7 +14,6 @@
 @interface YJKlgEmptyAlert ()
 @property (nonatomic,strong) UIImageView *bgImgView;
 @property (nonatomic,strong) UILabel *contentLab;
-@property (nonatomic,strong) UIButton *closeBtn;
 @property(nonatomic,strong) UIView *maskView;
 @end
 @implementation YJKlgEmptyAlert
@@ -33,12 +32,8 @@
             make.centerY.equalTo(self.bgImgView).offset(self.bgImgView.image.size.height*0.5*0.35);
         }];
         
-        [self addSubview:self.closeBtn];
-        [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self);
-            make.top.equalTo(self.bgImgView.mas_bottom).offset(20);
-            make.width.height.mas_equalTo(40);
-        }];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)];
+        [self addGestureRecognizer:tap];
     }
     return self;
 }
@@ -49,6 +44,7 @@
     klgAlert.contentLab.text = text;
      klgAlert.maskView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     klgAlert.maskView.backgroundColor = [UIColor yj_colorWithHex:0x000000 alpha:0.6];
+    
     return klgAlert;
 }
 
@@ -89,14 +85,6 @@
         _bgImgView = [[UIImageView alloc] initWithImage:[UIImage yj_imageNamed:@"lgklg_icon_klg_empty" atBundle:LGAlert.alertBundle]];
     }
     return _bgImgView;
-}
-- (UIButton *)closeBtn{
-    if (!_closeBtn) {
-        _closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_closeBtn setImage:[UIImage yj_imageNamed:@"close" atBundle:LGAlert.alertBundle] forState:UIControlStateNormal];
-        [_closeBtn addTarget:self action:@selector(hide) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _closeBtn;
 }
 - (UILabel *)contentLab{
     if (!_contentLab) {
