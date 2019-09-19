@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		02AC489BAC9E80B668ABE277 /* Pods_LGAlertHUDDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C167AEBF22F95E598C48D3 /* Pods_LGAlertHUDDemo.framework */; };
+		BA14F371233370D3001E5891 /* YJVipControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA14F370233370D3001E5891 /* YJVipControlView.m */; };
+		BA14F3742333A081001E5891 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA14F3732333A081001E5891 /* TestViewController.m */; };
 		BA780449216B05A6000C63A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA780448216B05A6000C63A3 /* AppDelegate.m */; };
 		BA780451216B05A9000C63A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA780450216B05A9000C63A3 /* Assets.xcassets */; };
 		BA780454216B05A9000C63A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA780452216B05A9000C63A3 /* LaunchScreen.storyboard */; };
@@ -36,6 +38,10 @@
 /* Begin PBXFileReference section */
 		28338D6008D9F2F1ED184055 /* Pods-LGAlertHUDDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LGAlertHUDDemo.debug.xcconfig"; path = "Target Support Files/Pods-LGAlertHUDDemo/Pods-LGAlertHUDDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		7070657C391219DBCD2C1517 /* Pods-LGAlertHUDDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LGAlertHUDDemo.release.xcconfig"; path = "Target Support Files/Pods-LGAlertHUDDemo/Pods-LGAlertHUDDemo.release.xcconfig"; sourceTree = "<group>"; };
+		BA14F36F233370D3001E5891 /* YJVipControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJVipControlView.h; sourceTree = "<group>"; };
+		BA14F370233370D3001E5891 /* YJVipControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJVipControlView.m; sourceTree = "<group>"; };
+		BA14F3722333A081001E5891 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		BA14F3732333A081001E5891 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		BA780444216B05A6000C63A3 /* LGAlertHUDDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LGAlertHUDDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA780447216B05A6000C63A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BA780448216B05A6000C63A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -139,6 +145,8 @@
 				BA7804BD216B271B000C63A3 /* Main.storyboard */,
 				BA7804BE216B271B000C63A3 /* ViewController.h */,
 				BA7804BF216B271B000C63A3 /* ViewController.m */,
+				BA14F3722333A081001E5891 /* TestViewController.h */,
+				BA14F3732333A081001E5891 /* TestViewController.m */,
 				BA780450216B05A9000C63A3 /* Assets.xcassets */,
 				BA780455216B05A9000C63A3 /* Info.plist */,
 				BA780452216B05A9000C63A3 /* LaunchScreen.storyboard */,
@@ -200,6 +208,8 @@
 				BAF8D50F2255B2EB00C8AD58 /* YJLancooAlert.m */,
 				BAB887D2231CFF0000899BB6 /* YJKlgEmptyAlert.h */,
 				BAB887D3231CFF0000899BB6 /* YJKlgEmptyAlert.m */,
+				BA14F36F233370D3001E5891 /* YJVipControlView.h */,
+				BA14F370233370D3001E5891 /* YJVipControlView.m */,
 			);
 			path = Lancoo;
 			sourceTree = "<group>";
@@ -328,6 +338,7 @@
 				BA7804A4216B0643000C63A3 /* YJAlertViewController.m in Sources */,
 				BA780457216B05A9000C63A3 /* main.m in Sources */,
 				BA7804A3216B0643000C63A3 /* YJAlertViewHelper.m in Sources */,
+				BA14F3742333A081001E5891 /* TestViewController.m in Sources */,
 				BA7804B5216B07E2000C63A3 /* LGAlertHUD.m in Sources */,
 				BA7804A0216B0643000C63A3 /* YJAlertViewWindow.m in Sources */,
 				BA7804A5216B0643000C63A3 /* YJAlertViewButtonProperties.m in Sources */,
@@ -338,6 +349,7 @@
 				BA780449216B05A6000C63A3 /* AppDelegate.m in Sources */,
 				BA7804AA216B0643000C63A3 /* YJAlertViewButton.m in Sources */,
 				BA7804A8216B0643000C63A3 /* YJAlertViewCell.m in Sources */,
+				BA14F371233370D3001E5891 /* YJVipControlView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

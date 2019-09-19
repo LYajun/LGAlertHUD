@@ -14,6 +14,8 @@
 #import <Masonry/Masonry.h>
 #import "YJKlgEmptyAlert.h"
 
+#import "TestViewController.h"
+
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -23,7 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[YJKlgEmptyAlert klgEmptyAlertWithText:@"此知识点正在构建中"] show];
+    self.navigationController.navigationBar.translucent = NO;
+    
+//    [[YJKlgEmptyAlert klgEmptyAlertWithText:@"此知识点正在构建中"] show];
     
 //    [[YJLancooAlert lancooAlertWithTitle:@"温馨提示" msg:@"快速减肥环境是" cancelTitle:@"穷在想想" destructiveTitle:@"确定" cancelBlock:^{
 //
@@ -35,9 +39,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    TestViewController *testVC = [[TestViewController alloc] init];
+    [self.navigationController pushViewController:testVC animated:YES];
+    return;
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
+                
                 [LGAlert alertWarningWithMessage:@"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum sagittis magna" cancelBlock:nil confirmBlock:nil];
                 break;
             case 1:

@@ -132,7 +132,7 @@
     [contentView addSubview:self.titleL];
     [self.titleL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(contentView);
-        make.top.equalTo(contentView.mas_top).offset(kLancooHeadImageH/2);
+        make.top.equalTo(contentView.mas_top).offset(kLancooHeadImageH/2 + 10);
         make.left.equalTo(contentView.mas_left).offset(20);
         make.height.mas_equalTo(20);
     }];
@@ -141,7 +141,7 @@
     [self.contentL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(contentView);
         make.left.equalTo(contentView).offset(20);
-        make.top.equalTo(self.titleL.mas_bottom).offset(20);
+        make.top.equalTo(self.titleL.mas_bottom).offset(15);
         make.bottom.equalTo(self.cancelBtn.mas_top).offset(-30);
     }];
     
