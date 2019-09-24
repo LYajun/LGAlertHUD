@@ -14,7 +14,7 @@
 
 #define kLancooScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kLancooScreenHeight [UIScreen mainScreen].bounds.size.height
-#define kLancooWidth (kLancooScreenWidth * 0.8)
+#define kLancooWidth (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350 : kLancooScreenWidth * 0.8)
 #define kLancooHeadImageH 100
 
 

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "LGAlertHUD"
-  s.version      = "1.0.9"
+  s.version      = "1.1.0"
   s.summary      = "提示框,进度条"
 
   # 项目主页地址
