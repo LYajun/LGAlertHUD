@@ -14,7 +14,8 @@
 
 #define kLancooScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kLancooScreenHeight [UIScreen mainScreen].bounds.size.height
-#define kLancooWidth (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350 : kLancooScreenWidth * 0.8)
+#define IsPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define kLancooWidth (IsPad ? 400 : kLancooScreenWidth * 0.8)
 #define kLancooHeadImageH 100
 
 
@@ -99,6 +100,10 @@
     
     CGFloat leftOffset = kLancooScreenWidth > 320 ? 30 : 20;
     CGFloat btnSpace = 16;
+    if (IsPad) {
+        leftOffset = 48;
+        btnSpace = 24;
+    }
     CGFloat twoBtnWidth = (kLancooWidth - leftOffset * 2 - btnSpace)/2;
     CGFloat twoBtnHeight = 36;
     [contentView addSubview:self.cancelBtn];
@@ -120,10 +125,13 @@
     [self.destructiveBtn yj_shadowWithCornerRadius:twoBtnHeight/2 borderWidth:0 borderColor:nil shadowColor:[UIColor yj_colorWithHex:0x00C3F2] shadowOpacity:0.5 shadowOffset:CGSizeMake(0, 2.5) roundedRect:CGRectMake(3, 2, twoBtnWidth-6, twoBtnHeight) cornerRadii:CGSizeMake(twoBtnHeight/2, twoBtnHeight/2) rectCorner:UIRectCornerAllCorners];
    
      CGFloat sureWidth = (kLancooScreenWidth > 320 ? 0.5 : 0.7)*kLancooWidth;
+    if (IsPad) {
+        sureWidth = 240;
+    }
     [contentView addSubview:self.sureBtn];
     [self.sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(contentView);
-        make.width.equalTo(contentView).multipliedBy(kLancooScreenWidth > 320 ? 0.5 : 0.7);
+        make.width.mas_equalTo(sureWidth);
         make.height.bottom.equalTo(self.cancelBtn);
     }];
     
@@ -159,6 +167,12 @@
     CGFloat titleHeight = kLancooHeadImageH/2 + 20;
     CGFloat contentTopOffset = 20;
     CGFloat contentBottomOffset = 30 + 10;
+    
+    if (IsPad) {
+        contentTopOffset += 10;
+        contentBottomOffset += 20;
+    }
+    
     return topOffset + bottomOffset + titleHeight + contentTopOffset + contentBottomOffset;
 }
 #pragma mark - Public

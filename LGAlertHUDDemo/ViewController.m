@@ -34,7 +34,9 @@
 //    } destructiveBlock:^{
 //
 //    }] show];
-    
+//    [[YJLancooAlert lancooAlertWithTitle:@"温馨提示" msg:@"肯定是减肥收快递费" sureTitle:@"是课件进度会" sureBlock:^{
+//
+//    }] show];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -14,7 +14,9 @@
 
 #define kLancooScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kLancooScreenHeight [UIScreen mainScreen].bounds.size.height
-#define kLancooWidth (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 350 : kLancooScreenWidth * 0.8)
+#define IsPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define kLancooWidth (IsPad ? 400 : kLancooScreenWidth * 0.8)
+#define kLancooHeight (IsPad ? 300 : kLancooWidth * 0.9)
 #define kLancooHeadImageH 100
 @interface YJVipControlView ()
 /** 头像 */
@@ -43,19 +45,19 @@
 }
 - (void)layoutUI{
     
-    [self addSubview:self.closeBtn];
-    [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self);
-        make.bottom.equalTo(self);
-        make.width.height.mas_equalTo(40);
-    }];
+//    [self addSubview:self.closeBtn];
+//    [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.equalTo(self);
+//        make.bottom.equalTo(self);
+//        make.width.height.mas_equalTo(40);
+//    }];
     
     UIView *contentView = [UIView new];
     contentView.backgroundColor = [UIColor whiteColor];
     [self addSubview:contentView];
     
     [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.closeBtn.mas_top).offset(-20);
+        make.bottom.equalTo(self);
         make.centerX.left.equalTo(self);
         make.top.equalTo(self.mas_top).offset(kLancooHeadImageH/2 - 10);
     }];
@@ -68,14 +70,19 @@
         make.width.equalTo(self.headImageV.mas_height).multipliedBy(1.08);
     }];
     
+    CGFloat sureWidth = kLancooWidth - 60;
+    if (IsPad) {
+        sureWidth = 240;
+    }
     [contentView addSubview:self.sureBtn];
     [self.sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(contentView);
-        make.left.equalTo(contentView).offset(30);
+        make.width.mas_equalTo(sureWidth);
         make.bottom.equalTo(contentView).offset(-20);
         make.height.mas_equalTo(40);
     }];
-    [self.sureBtn yj_clipLayerWithRadius:20 width:0 color:nil];
+    [self.sureBtn yj_shadowWithCornerRadius:20 borderWidth:0 borderColor:nil shadowColor:[UIColor yj_colorWithHex:0xEE4000] shadowOpacity:0.5 shadowOffset:CGSizeMake(1, 2.5) roundedRect:CGRectMake(3, 2, sureWidth-6, 40) cornerRadii:CGSizeMake(20, 20) rectCorner:UIRectCornerAllCorners];
+  
     
     [contentView addSubview:self.titleL];
     [self.titleL mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -121,11 +128,15 @@
         make.edges.equalTo(view);
     }];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeAction)];
+    [self.maskView addGestureRecognizer:tap];
+    
     [view addSubview:self];
     [self mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(view);
+        make.centerY.equalTo(view).offset(- (kLancooHeadImageH/4+10));
+        make.centerX.equalTo(view);
         make.width.mas_equalTo(kLancooWidth);
-        make.height.mas_equalTo(self.mas_width).multipliedBy(1.1);
+        make.height.mas_equalTo(kLancooHeight);
     }];
     
     self.transform = CGAffineTransformConcat(CGAffineTransformIdentity,
