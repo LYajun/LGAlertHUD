@@ -41,9 +41,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    TestViewController *testVC = [[TestViewController alloc] init];
-    [self.navigationController pushViewController:testVC animated:YES];
-    return;
+//    TestViewController *testVC = [[TestViewController alloc] init];
+//    [self.navigationController pushViewController:testVC animated:YES];
+//    return;
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
@@ -76,10 +76,10 @@
     }else if (indexPath.section == 1){
         switch (indexPath.row) {
             case 0:
-                [LGAlert alertSheetWithTitle:@"标题" message:@"Lorem ipsum dolor sit amet" canceTitle:@"取消" confirmTitle:@"确定" cancelBlock:nil confirmBlock:nil atController:self];
+                [LGAlert alertSheetWithTitle:nil message:@"Lorem ipsum dolor sit amet" canceTitle:@"取消" confirmTitle:@"确定" cancelBlock:nil confirmBlock:nil atController:self];
                 break;
             case 1:
-                [LGAlert alertSheetWithTitle:@"标题" message:@"Lorem ipsum dolor sit amet" canceTitle:@"取消" buttonTitles:@[@"button1",@"button2"] buttonBlock:^(NSInteger index) {
+                [LGAlert alertSheetWithTitle:nil message:@"Lorem ipsum dolor sit amet" canceTitle:@"取消" buttonTitles:@[@"button1",@"button2"] buttonBlock:^(NSInteger index) {
                     NSLog(@"点击:%li",index);
                 } cancelBlock:nil atController:self];
                 break;

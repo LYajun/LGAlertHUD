@@ -10,6 +10,7 @@
 #import "YJAlertView.h"
 #import "LGProgressHUD.h"
 #import <YJExtensions/YJExtensions.h>
+#import "YJSheetView.h"
 
 @interface LGAlertHUD ()
 {
@@ -192,7 +193,21 @@
         [self hide];
     }
     if (LGA_IsIpad()) {
-        [self alertWithTitle:title message:msg canceTitle:canceTitle confirmTitle:confirmTitle cancelBlock:cancelBlock confirmBlock:confirmBlock];
+        YJSheetView *sheetView = [YJSheetView sheetViewWithTitle:title canceTitle:canceTitle buttonTitles:@[confirmTitle] buttonBlock:^(NSInteger index) {
+            if (confirmBlock) {
+                confirmBlock();
+            }
+        } cancelBlock:^{
+            if (cancelBlock) {
+                cancelBlock();
+            }
+        }];
+        
+        if (controller.navigationController) {
+            [sheetView showOnView:controller.navigationController.view];
+        }else{
+            [sheetView showOnView:controller.view];
+        }
     }else{
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *confirmButton = [UIAlertAction actionWithTitle:confirmTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -215,15 +230,21 @@
         [self hide];
     }
     if (LGA_IsIpad()) {
-        [[[YJAlertView alloc]initWithTitle:title message:msg style:YJAlertViewStyleAlert buttonTitles:buttonTitles cancelButtonTitle:canceTitle destructiveButtonTitle:nil actionHandler:^(YJAlertView * _Nonnull alertView, NSUInteger index, NSString * _Nullable title) {
+        YJSheetView *sheetView = [YJSheetView sheetViewWithTitle:title canceTitle:canceTitle buttonTitles:buttonTitles buttonBlock:^(NSInteger index) {
             if (buttonBlock) {
                 buttonBlock(index);
             }
-        } cancelHandler:^(YJAlertView * _Nonnull alertView) {
+        } cancelBlock:^{
             if (cancelBlock) {
                 cancelBlock();
             }
-        } destructiveHandler:nil] showAnimated];
+        }];
+        
+        if (controller.navigationController) {
+            [sheetView showOnView:controller.navigationController.view];
+        }else{
+            [sheetView showOnView:controller.view];
+        }
     }else{
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:canceTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
