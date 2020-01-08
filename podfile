@@ -3,5 +3,5 @@ use_frameworks!
 
 target 'LGAlertHUDDemo’ do
 pod 'Masonry'
-pod 'YJExtensions', '1.1.1'
+pod 'YJExtensions', '1.2.4'
 end

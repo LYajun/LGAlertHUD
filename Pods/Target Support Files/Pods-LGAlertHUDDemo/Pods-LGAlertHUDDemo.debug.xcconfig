@@ -1,8 +1,8 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Masonry" "${PODS_CONFIGURATION_BUILD_DIR}/TFHpple" "${PODS_CONFIGURATION_BUILD_DIR}/YJExtensions"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Masonry" "${PODS_CONFIGURATION_BUILD_DIR}/YJExtensions"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Masonry/Masonry.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/TFHpple/TFHpple.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/YJExtensions/YJExtensions.framework/Headers" $(SDKROOT)/usr/include/libxml2
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Masonry/Masonry.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/YJExtensions/YJExtensions.framework/Headers" $(SDKROOT)/usr/include/libxml2
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -l"xml2" -framework "CoreFoundation" -framework "Foundation" -framework "Masonry" -framework "TFHpple" -framework "UIKit" -framework "YJExtensions"
+OTHER_LDFLAGS = $(inherited) -l"xml2" -framework "Foundation" -framework "Masonry" -framework "UIKit" -framework "YJExtensions"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.

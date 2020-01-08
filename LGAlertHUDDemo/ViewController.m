@@ -15,6 +15,7 @@
 #import "YJKlgEmptyAlert.h"
 
 #import "TestViewController.h"
+#import "YJScoreAlert.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -26,7 +27,7 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.translucent = NO;
-    
+    [self scoreAlert];
 //    [[YJKlgEmptyAlert klgEmptyAlertWithText:@"此知识点正在构建中"] show];
     
 //    [[YJLancooAlert lancooAlertWithTitle:@"温馨提示" msg:@"快速减肥环境是" cancelTitle:@"穷在想想" destructiveTitle:@"确定" cancelBlock:^{
@@ -38,7 +39,22 @@
 //
 //    }] show];
 }
-
+- (void)scoreAlert{
+        YJScoreAlert *scoreAlert = [YJScoreAlert scoreAlert];
+        scoreAlert.totalScore = 200;
+        scoreAlert.answerScore = 88;
+    
+        scoreAlert.rightCount = 101;
+        scoreAlert.wrongCount = 23;
+    
+    
+        scoreAlert.unMarkCount = 0;
+    
+        scoreAlert.bigTopicCount = 23;
+        scoreAlert.smallTopicCount = 133;
+    
+        [scoreAlert show];
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 //    TestViewController *testVC = [[TestViewController alloc] init];

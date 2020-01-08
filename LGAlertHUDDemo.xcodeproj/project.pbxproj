@@ -10,6 +10,12 @@
 		02AC489BAC9E80B668ABE277 /* Pods_LGAlertHUDDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C167AEBF22F95E598C48D3 /* Pods_LGAlertHUDDemo.framework */; };
 		BA14F371233370D3001E5891 /* YJVipControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA14F370233370D3001E5891 /* YJVipControlView.m */; };
 		BA14F3742333A081001E5891 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA14F3732333A081001E5891 /* TestViewController.m */; };
+		BA53A52123C5AA590039CE89 /* YJScoreAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = BA53A51723C5AA590039CE89 /* YJScoreAlert.m */; };
+		BA53A52223C5AA590039CE89 /* YJTaskMarLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA53A51823C5AA590039CE89 /* YJTaskMarLabel.m */; };
+		BA53A52323C5AA590039CE89 /* YJAnswerAlertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA53A51A23C5AA590039CE89 /* YJAnswerAlertCell.m */; };
+		BA53A52423C5AA590039CE89 /* YJAnswerAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA53A51B23C5AA590039CE89 /* YJAnswerAlertView.m */; };
+		BA53A52523C5AA590039CE89 /* YJAnswerAlertChoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA53A51D23C5AA590039CE89 /* YJAnswerAlertChoiceCell.m */; };
+		BA53A52923C5AEBA0039CE89 /* YJAnswerConst.m in Sources */ = {isa = PBXBuildFile; fileRef = BA53A52823C5AEBA0039CE89 /* YJAnswerConst.m */; };
 		BA780449216B05A6000C63A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA780448216B05A6000C63A3 /* AppDelegate.m */; };
 		BA780451216B05A9000C63A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA780450216B05A9000C63A3 /* Assets.xcassets */; };
 		BA780454216B05A9000C63A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA780452216B05A9000C63A3 /* LaunchScreen.storyboard */; };
@@ -45,6 +51,18 @@
 		BA14F370233370D3001E5891 /* YJVipControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJVipControlView.m; sourceTree = "<group>"; };
 		BA14F3722333A081001E5891 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		BA14F3732333A081001E5891 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		BA53A51723C5AA590039CE89 /* YJScoreAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJScoreAlert.m; sourceTree = "<group>"; };
+		BA53A51823C5AA590039CE89 /* YJTaskMarLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJTaskMarLabel.m; sourceTree = "<group>"; };
+		BA53A51923C5AA590039CE89 /* YJAnswerAlertChoiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJAnswerAlertChoiceCell.h; sourceTree = "<group>"; };
+		BA53A51A23C5AA590039CE89 /* YJAnswerAlertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJAnswerAlertCell.m; sourceTree = "<group>"; };
+		BA53A51B23C5AA590039CE89 /* YJAnswerAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJAnswerAlertView.m; sourceTree = "<group>"; };
+		BA53A51C23C5AA590039CE89 /* YJScoreAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJScoreAlert.h; sourceTree = "<group>"; };
+		BA53A51D23C5AA590039CE89 /* YJAnswerAlertChoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJAnswerAlertChoiceCell.m; sourceTree = "<group>"; };
+		BA53A51E23C5AA590039CE89 /* YJTaskMarLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJTaskMarLabel.h; sourceTree = "<group>"; };
+		BA53A51F23C5AA590039CE89 /* YJAnswerAlertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJAnswerAlertCell.h; sourceTree = "<group>"; };
+		BA53A52023C5AA590039CE89 /* YJAnswerAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJAnswerAlertView.h; sourceTree = "<group>"; };
+		BA53A52623C5AD420039CE89 /* YJAnswerConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJAnswerConst.h; sourceTree = "<group>"; };
+		BA53A52823C5AEBA0039CE89 /* YJAnswerConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJAnswerConst.m; sourceTree = "<group>"; };
 		BA780444216B05A6000C63A3 /* LGAlertHUDDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LGAlertHUDDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA780447216B05A6000C63A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BA780448216B05A6000C63A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -127,6 +145,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BA53A51623C5AA590039CE89 /* AnswerAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				BA53A51F23C5AA590039CE89 /* YJAnswerAlertCell.h */,
+				BA53A51A23C5AA590039CE89 /* YJAnswerAlertCell.m */,
+				BA53A51923C5AA590039CE89 /* YJAnswerAlertChoiceCell.h */,
+				BA53A51D23C5AA590039CE89 /* YJAnswerAlertChoiceCell.m */,
+				BA53A52023C5AA590039CE89 /* YJAnswerAlertView.h */,
+				BA53A51B23C5AA590039CE89 /* YJAnswerAlertView.m */,
+				BA53A51C23C5AA590039CE89 /* YJScoreAlert.h */,
+				BA53A51723C5AA590039CE89 /* YJScoreAlert.m */,
+				BA53A51E23C5AA590039CE89 /* YJTaskMarLabel.h */,
+				BA53A51823C5AA590039CE89 /* YJTaskMarLabel.m */,
+				BA53A52623C5AD420039CE89 /* YJAnswerConst.h */,
+				BA53A52823C5AEBA0039CE89 /* YJAnswerConst.m */,
+			);
+			path = AnswerAlertView;
+			sourceTree = "<group>";
+		};
 		BA78043B216B05A6000C63A3 = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +204,7 @@
 		BA780484216B0642000C63A3 /* LGAlertHUD */ = {
 			isa = PBXGroup;
 			children = (
+				BA53A51623C5AA590039CE89 /* AnswerAlertView */,
 				BA7804AE216B06E5000C63A3 /* LGAlertHUD.bundle */,
 				BA7804AB216B0672000C63A3 /* LGProgressHUD.h */,
 				BA7804AC216B0672000C63A3 /* LGProgressHUD.m */,
@@ -357,12 +395,18 @@
 				BA78049F216B0643000C63A3 /* YJAlertViewTextField.m in Sources */,
 				BA7804AD216B0672000C63A3 /* LGProgressHUD.m in Sources */,
 				BA7804A1216B0643000C63A3 /* YJAlertViewWindowsObserver.m in Sources */,
+				BA53A52223C5AA590039CE89 /* YJTaskMarLabel.m in Sources */,
 				BAF8D5102255B2EB00C8AD58 /* YJLancooAlert.m in Sources */,
+				BA53A52523C5AA590039CE89 /* YJAnswerAlertChoiceCell.m in Sources */,
+				BA53A52923C5AEBA0039CE89 /* YJAnswerConst.m in Sources */,
+				BA53A52323C5AA590039CE89 /* YJAnswerAlertCell.m in Sources */,
 				BA7804A4216B0643000C63A3 /* YJAlertViewController.m in Sources */,
 				BA780457216B05A9000C63A3 /* main.m in Sources */,
 				BA7804A3216B0643000C63A3 /* YJAlertViewHelper.m in Sources */,
 				BA91665E23509E0900A7F7C8 /* YJSheetView.m in Sources */,
+				BA53A52423C5AA590039CE89 /* YJAnswerAlertView.m in Sources */,
 				BA14F3742333A081001E5891 /* TestViewController.m in Sources */,
+				BA53A52123C5AA590039CE89 /* YJScoreAlert.m in Sources */,
 				BA7804B5216B07E2000C63A3 /* LGAlertHUD.m in Sources */,
 				BA91666223509F1700A7F7C8 /* YJSheetCell.m in Sources */,
 				BA7804A0216B0643000C63A3 /* YJAlertViewWindow.m in Sources */,

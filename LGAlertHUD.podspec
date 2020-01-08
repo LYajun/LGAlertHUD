@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "LGAlertHUD"
-  s.version      = "1.1.2"
+  s.version      = "1.1.3"
   s.summary      = "提示框,进度条"
 
   # 项目主页地址
@@ -29,6 +29,14 @@ Pod::Spec.new do |s|
   s.subspec "AlertView" do |ss|
     ss.source_files =  "LGAlertHUD/AlertView/*.{h,m}"
   end
+
+
+    s.subspec 'AnswerAlertView' do |answerAlertView|
+        answerAlertView.source_files = 'LGAlertHUD/AnswerAlertView/**/*'
+        answerAlertView.dependency 'YJExtensions'
+        answerAlertView.dependency 'Masonry'
+    end
+
 
   s.subspec "YJSheetView" do |sheetView|
     sheetView.source_files =  "LGAlertHUD/YJSheetView/*.{h,m}"

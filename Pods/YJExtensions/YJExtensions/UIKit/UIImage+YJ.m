@@ -21,6 +21,13 @@
     }
     return [UIImage imageNamed:[bundle yj_bundlePathWithName:namePath]];
 }
++ (UIImage *)yj_imagePathName:(NSString *)name atDir:(NSString *)dir atBundle:(NSBundle *)bundle{
+    NSString *namePath = name;
+    if (dir && dir.length > 0) {
+        namePath = [dir stringByAppendingPathComponent:namePath];
+    }
+    return [UIImage yj_imagePathName:namePath atBundle:bundle];
+}
 + (UIImage *)yj_imagePathName:(NSString *)name atBundle:(nonnull NSBundle *)bundle{
     return [UIImage imageWithContentsOfFile:[bundle yj_bundlePathWithName:name]];
 }
@@ -32,7 +39,18 @@
     return [UIImage animatedImageNamed:[bundle yj_bundlePathWithName:namePath] duration:duration];
 }
 
-
++ (NSArray *)yj_animationImagesWithImageName:(NSString *)name atDir:(NSString *)dir atBundle:(NSBundle *)bundle{
+    NSFileManager *fielM = [NSFileManager defaultManager];
+    NSArray *arrays = [fielM contentsOfDirectoryAtPath:[bundle yj_bundlePathWithName:dir] error:nil];
+    NSMutableArray *imageArr = [NSMutableArray array];
+    for (int i = 0; i < arrays.count; i++) {
+        UIImage *image = [UIImage yj_imageNamed:[NSString stringWithFormat:@"%@%li",name,i] atDir:dir atBundle:bundle];
+        if (image) {
+            [imageArr addObject:image];
+        }
+    }
+    return imageArr;
+}
 + (UIImage *)yj_animatedGIFWithData:(NSData *)data {
     if (!data) {
         return nil;

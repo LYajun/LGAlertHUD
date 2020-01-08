@@ -16,7 +16,7 @@
 #define kLancooScreenHeight [UIScreen mainScreen].bounds.size.height
 #define IsPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define kLancooWidth (IsPad ? 400 : kLancooScreenWidth * 0.8)
-#define kLancooHeadImageH 100
+#define kLancooHeadImageH (IsPad ? 120 : 100)
 
 
 @interface YJLancooAlert ()
@@ -67,15 +67,15 @@
 }
 - (void)configure{
 
-    _titleFontSize = 18;
+    _titleFontSize = IsPad ? 21 : 18;
     _titleColor = [UIColor yj_colorWithHex:0x222222];
     
-    _contentFontSize = 15;
-    _contentColor = [UIColor yj_colorWithHex:0x444444];
+    _contentFontSize = IsPad ? 17 : 15;
+    _contentColor = [UIColor yj_colorWithHex:0x252525];
     
     _btnBackgroundColor = [UIColor yj_colorWithHex:0x23a1fa];
     _btnTitleColor = [UIColor whiteColor];
-    _btnTitleFontSize = 15;
+    _btnTitleFontSize = IsPad ? 17 : 15;
 //    _btnBorderColor = [UIColor yj_colorWithHex:0x1DBDB8];
     
 }
@@ -105,7 +105,7 @@
         btnSpace = 24;
     }
     CGFloat twoBtnWidth = (kLancooWidth - leftOffset * 2 - btnSpace)/2;
-    CGFloat twoBtnHeight = 36;
+    CGFloat twoBtnHeight = IsPad ? 40 : 36;
     [contentView addSubview:self.cancelBtn];
     [self.cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(contentView).offset(-20);
@@ -126,7 +126,7 @@
    
      CGFloat sureWidth = (kLancooScreenWidth > 320 ? 0.5 : 0.7)*kLancooWidth;
     if (IsPad) {
-        sureWidth = 240;
+        sureWidth = 200;
     }
     [contentView addSubview:self.sureBtn];
     [self.sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -140,7 +140,7 @@
     [contentView addSubview:self.titleL];
     [self.titleL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(contentView);
-        make.top.equalTo(contentView.mas_top).offset(kLancooHeadImageH/2 + 10);
+        make.top.equalTo(contentView.mas_top).offset(kLancooHeadImageH/2 + 10 + (IsPad ? 10 : 0));
         make.left.equalTo(contentView.mas_left).offset(20);
         make.height.mas_equalTo(20);
     }];
@@ -149,7 +149,7 @@
     [self.contentL mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(contentView);
         make.left.equalTo(contentView).offset(20);
-        make.top.equalTo(self.titleL.mas_bottom).offset(15);
+        make.top.equalTo(self.titleL.mas_bottom).offset(20);
         make.bottom.equalTo(self.cancelBtn.mas_top).offset(-30);
     }];
     
@@ -157,16 +157,16 @@
     [self.contentTextView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(contentView);
         make.left.equalTo(contentView).offset(20);
-        make.top.equalTo(self.titleL.mas_bottom).offset(8);
-        make.bottom.equalTo(self.cancelBtn.mas_top).offset(-20);
+        make.top.equalTo(self.titleL.mas_bottom).offset(20);
+        make.bottom.equalTo(self.cancelBtn.mas_top).offset(-30);
     }];
 }
 - (CGFloat)alertHeightuUnlessContentHeight{
     CGFloat topOffset = kLancooHeadImageH/2 - 10;
-    CGFloat bottomOffset = 36 + 20;
-    CGFloat titleHeight = kLancooHeadImageH/2 + 20;
-    CGFloat contentTopOffset = 20;
-    CGFloat contentBottomOffset = 30 + 10;
+    CGFloat bottomOffset = (IsPad ? 40 : 36) + 20;
+    CGFloat titleHeight = kLancooHeadImageH/2 + 10 + 20 + (IsPad ? 10 : 0);
+    CGFloat contentTopOffset = 25;
+    CGFloat contentBottomOffset = 35;
     
     if (IsPad) {
         contentTopOffset += 10;
@@ -232,6 +232,10 @@
     return alertView;
 }
 + (YJLancooAlert *)lancooAlertWithTitle:(NSString *)title msgAttr:(NSAttributedString *)msgAttr cancelTitle:(NSString *)cancelTitle destructiveTitle:(NSString *)destructiveTitle cancelBlock:(void (^)(void))cancelBlock destructiveBlock:(void (^)(void))destructiveBlock{
+    return [YJLancooAlert lancooAlertWithTitle:title msgAttr:msgAttr alignment:NSTextAlignmentCenter cancelTitle:cancelTitle destructiveTitle:destructiveTitle cancelBlock:cancelBlock destructiveBlock:destructiveBlock];
+}
++ (YJLancooAlert *)lancooAlertWithTitle:(NSString *)title msgAttr:(NSAttributedString *)msgAttr alignment:(NSTextAlignment)alignment cancelTitle:(NSString *)cancelTitle destructiveTitle:(NSString *)destructiveTitle cancelBlock:(void (^)(void))cancelBlock destructiveBlock:(void (^)(void))destructiveBlock{
+    
     YJLancooAlert *alertView = [[YJLancooAlert alloc] init];
     alertView.cancelBlock = cancelBlock;
     alertView.destructiveBlock = destructiveBlock;
@@ -241,7 +245,7 @@
     NSMutableAttributedString *attr = msgAttr.mutableCopy;
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = 6;
-    paragraphStyle.alignment = NSTextAlignmentCenter;
+    paragraphStyle.alignment = alignment;
     [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attr.length)];
     alertView.contentTextView.attributedText = attr;
     [alertView.cancelBtn setTitle:cancelTitle forState:UIControlStateNormal];

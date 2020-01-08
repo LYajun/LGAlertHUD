@@ -8,12 +8,13 @@
 
 #import "NSString+YJ.h"
 #import <CommonCrypto/CommonCrypto.h>
-#import <TFHpple/TFHpple.h>
+#import "YJEHpple.h"
 #import <objc/runtime.h>
 
 #define YJ_ASSOCIATIVE_CURRENT_DICTIONARY_KEY @"ASSOCIATIVE_CURRENT_DICTIONARY_KEY"
 #define YJ_ASSOCIATIVE_CURRENT_TEXT_KEY @"ASSOCIATIVE_CURRENT_TEXT_KEY"
 
+#define IsObjEmpty(_ref)    (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]))
 @interface NSString () <NSXMLParserDelegate>
 
 @property(nonatomic, retain)NSMutableArray *currentDictionaries;
@@ -27,7 +28,7 @@
     return [NSString stringWithFormat:@"%c",1];
 }
 + (NSString *)yj_StandardAnswerSeparatedStr{
-    return @"$、 ";
+    return @"$/";
 }
 + (NSString *)yj_stringToASCIIStringWithIntCount:(NSInteger)intCount{
     return [NSString stringWithFormat:@"%c",(int)intCount];
@@ -63,6 +64,9 @@
 }
 - (NSString *)yj_deleteWhitespaceCharacter{
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+- (NSString *)yj_deleteWhitespaceAndNewlineCharacter{
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 - (NSInteger)yj_stringToASCIIInt{
     return [self characterAtIndex:0];
@@ -226,12 +230,12 @@
     }
     NSData *htmlData = [html dataUsingEncoding:NSUTF8StringEncoding];
     // 解析html数据
-    TFHpple *xpathParser = [[TFHpple alloc] initWithHTMLData:htmlData];
+    YJEHpple *xpathParser = [[YJEHpple alloc] initWithHTMLData:htmlData];
     // 根据标签来进行过滤
     NSArray *imgArray = [xpathParser searchWithXPathQuery:@"//img"];
     
     if (imgArray && imgArray.count > 0) {
-        [imgArray enumerateObjectsUsingBlock:^(TFHppleElement *hppleElement, NSUInteger idx, BOOL * _Nonnull stop) {
+        [imgArray enumerateObjectsUsingBlock:^(YJEHppleElement *hppleElement, NSUInteger idx, BOOL * _Nonnull stop) {
             NSDictionary *attributes = hppleElement.attributes;
             NSString *src = attributes[@"src"];
             NSString *srcSuf = [src componentsSeparatedByString:@"."].lastObject;
@@ -261,6 +265,41 @@
                                                withString:@""];
     }
     return html;
+}
++ (NSString *)yj_adaptWebViewForHtml:(NSString *)htmlStr{
+    NSMutableString *headHtml = [[NSMutableString alloc] initWithCapacity:0];
+    [headHtml appendString : @"<html>" ];
+    [headHtml appendString : @"<head>" ];
+    [headHtml appendString : @"<meta charset=\"utf-8\">" ];
+    [headHtml appendString : @"<meta id=\"viewport\" name=\"viewport\" content=\"width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=false\" />" ];
+    [headHtml appendString : @"<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />" ];
+    [headHtml appendString : @"<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\" />" ];
+    [headHtml appendString : @"<meta name=\"black\" name=\"apple-mobile-web-app-status-bar-style\" />" ];
+    [headHtml appendString:@"<body style=\"word-wrap:break-word;\">"];
+    //适配图片宽度，让图片宽度等于屏幕宽度
+    //[headHtml appendString : @"<style>img{width:100%;}</style>" ];
+    //[headHtml appendString : @"<style>img{height:auto;}</style>" ];
+    //适配图片宽度，让图片宽度最大等于屏幕宽度
+    //    [headHtml appendString : @"<style>img{max-width:100%;width:auto;height:auto;}</style>"];
+    //适配图片宽度，如果图片宽度超过手机屏幕宽度，就让图片宽度等于手机屏幕宽度，高度自适应，如果图片宽度小于屏幕宽度，就显示图片大小
+    [headHtml appendString : @"<script type='text/javascript'>"
+     "window.onload = function(){\n"
+     "var maxwidth=document.body.clientWidth;\n" //屏幕宽度
+     "for(i=0;i <document.images.length;i++){\n"
+     "var myimg = document.images[i];\n"
+     "if(myimg.width > maxwidth){\n"
+     "myimg.style.width = '90%';\n"
+     "myimg.style.height = 'auto'\n;"
+     "}\n"
+     "}\n"
+     "}\n"
+     "</script>\n"];
+    [headHtml appendString : @"<style>table{width:90%;}</style>" ];
+    [headHtml appendString : @"<title>webview</title>" ];
+    NSString *bodyHtml;
+    bodyHtml = [NSString stringWithString:headHtml];
+    bodyHtml = [bodyHtml stringByAppendingString:htmlStr];
+    return bodyHtml;
 }
 + (BOOL)predicateMatchWithText:(NSString *)text matchFormat:(NSString *)matchFormat{
     NSPredicate * predicate = [NSPredicate predicateWithFormat: @"SELF MATCHES %@", matchFormat];
@@ -384,6 +423,19 @@
         }
     }
     return displayTime;
+}
+#pragma mark - 编码、转码
+- (NSString *)yj_URLDecode{
+    return [self stringByRemovingPercentEncoding];
+}
+- (NSString *)yj_URLEncode{
+    NSMutableCharacterSet * allowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
+    [allowedCharacterSet removeCharactersInString:[kYJCharactersGeneralDelimitersToEncode stringByAppendingString:kYJCharactersSubDelimitersToEncode]];
+    NSString *URLEscapedString = [self stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacterSet];
+    return URLEscapedString;
+}
+- (NSString *)yj_URLQueryAllowedCharacterSet{
+    return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 @end
 
@@ -715,6 +767,9 @@
 
 @implementation NSString (Encrypt)
 + (NSString *)yj_encryptWithKey:(NSString *)key encryptStr:(NSString *)encryptStr{
+    if (IsObjEmpty(key) || IsObjEmpty(encryptStr)) {
+        return @"";
+    }
     //转化skey
     NSString *keyAfterMD5 = [self yj_md5EncryptStr:key];
     NSData *keyData = [keyAfterMD5 dataUsingEncoding: NSUTF8StringEncoding];
@@ -735,6 +790,9 @@
     return reverseStrF;
 }
 + (NSString *)yj_md5EncryptStr:(NSString *)encryptStr{
+    if (IsObjEmpty(encryptStr)) {
+        return @"";
+    }
     const char *cStrValue = [encryptStr UTF8String];
     unsigned char result[CC_MD5_DIGEST_LENGTH];
     CC_MD5(cStrValue, (CC_LONG)strlen(cStrValue), result);
@@ -746,6 +804,9 @@
     return mdfiveString;
 }
 + (NSString *)yj_encryptWithKey:(NSString *)key encryptDic:(NSDictionary *)encryptDic{
+    if (IsObjEmpty(key) || IsObjEmpty(encryptDic)) {
+        return @"";
+    }
     NSData *jsData;
     if (@available(iOS 11.0, *)) {
         jsData = [NSJSONSerialization dataWithJSONObject:encryptDic options:NSJSONWritingSortedKeys error:nil];
@@ -757,6 +818,9 @@
 }
 
 + (NSString *)yj_decryptWithKey:(NSString *)key decryptStr:(NSString *)decryptStr{
+    if (IsObjEmpty(key) || IsObjEmpty(decryptStr)) {
+        return @"";
+    }
     //转化skey
     NSString *keyAfterMD5 = [self yj_md5EncryptStr:key];
     NSData *keyData = [keyAfterMD5 dataUsingEncoding: NSUTF8StringEncoding];
