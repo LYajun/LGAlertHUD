@@ -11,6 +11,7 @@
 #import "LGProgressHUD.h"
 #import <YJExtensions/YJExtensions.h>
 #import "YJSheetView.h"
+#import "LGTipsAlertView.h"
 
 @interface LGAlertHUD ()
 {
@@ -222,6 +223,7 @@
         }];
         [alertController addAction:cancelButton];
         [alertController addAction:confirmButton];
+         alertController.modalPresentationStyle = UIModalPresentationFullScreen;
         [controller presentViewController:alertController animated:YES completion:nil];
     }
 }
@@ -262,6 +264,7 @@
             }];
             [alertController addAction:button];
         }
+        alertController.modalPresentationStyle = UIModalPresentationFullScreen;
         [controller presentViewController:alertController animated:YES completion:nil];
     }
 }
@@ -374,8 +377,40 @@
     }
 }
 - (void)hide{
+    [LGTipsAlertView hide];
     [_hud hide:YES];
     _hud = nil;
+}
+
+- (void)showImgSuccessWithStatus:(NSString *)status{
+    if (_hud) {
+        [self hide];
+    }
+    _hud = [[LGProgressHUD alloc] init];
+    [LGTipsAlertView showSuccessWithTips:status];
+}
+
+- (void)showImgInfoWithStatus:(NSString *)status{
+    if (_hud) {
+        [self hide];
+    }
+    _hud = [[LGProgressHUD alloc] init];
+    [LGTipsAlertView showErrorWithTips:status];
+}
+- (void)showImgErrorWithStatus:(NSString *)status{
+   if (_hud) {
+        [self hide];
+    }
+    _hud = [[LGProgressHUD alloc] init];
+    [LGTipsAlertView showFailureWithTips:status];
+}
+
+- (void)showImgErrorWithError:(NSError *)error{
+    if (_hud) {
+        [self hide];
+    }
+    _hud = [[LGProgressHUD alloc] init];
+    [LGTipsAlertView showFailureWithError:error];
 }
 #pragma mark - private
 - (UIView *)keyWindow{

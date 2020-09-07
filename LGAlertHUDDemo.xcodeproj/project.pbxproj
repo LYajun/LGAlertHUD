@@ -10,6 +10,7 @@
 		02AC489BAC9E80B668ABE277 /* Pods_LGAlertHUDDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C167AEBF22F95E598C48D3 /* Pods_LGAlertHUDDemo.framework */; };
 		BA14F371233370D3001E5891 /* YJVipControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA14F370233370D3001E5891 /* YJVipControlView.m */; };
 		BA14F3742333A081001E5891 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA14F3732333A081001E5891 /* TestViewController.m */; };
+		BA3B1AEF25063233000E7E14 /* LGTipsAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3B1AEE25063233000E7E14 /* LGTipsAlertView.m */; };
 		BA53A52123C5AA590039CE89 /* YJScoreAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = BA53A51723C5AA590039CE89 /* YJScoreAlert.m */; };
 		BA53A52223C5AA590039CE89 /* YJTaskMarLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA53A51823C5AA590039CE89 /* YJTaskMarLabel.m */; };
 		BA53A52323C5AA590039CE89 /* YJAnswerAlertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA53A51A23C5AA590039CE89 /* YJAnswerAlertCell.m */; };
@@ -51,6 +52,8 @@
 		BA14F370233370D3001E5891 /* YJVipControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJVipControlView.m; sourceTree = "<group>"; };
 		BA14F3722333A081001E5891 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		BA14F3732333A081001E5891 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		BA3B1AED25063233000E7E14 /* LGTipsAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGTipsAlertView.h; sourceTree = "<group>"; };
+		BA3B1AEE25063233000E7E14 /* LGTipsAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGTipsAlertView.m; sourceTree = "<group>"; };
 		BA53A51723C5AA590039CE89 /* YJScoreAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJScoreAlert.m; sourceTree = "<group>"; };
 		BA53A51823C5AA590039CE89 /* YJTaskMarLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJTaskMarLabel.m; sourceTree = "<group>"; };
 		BA53A51923C5AA590039CE89 /* YJAnswerAlertChoiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJAnswerAlertChoiceCell.h; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 				BA7804AE216B06E5000C63A3 /* LGAlertHUD.bundle */,
 				BA7804AB216B0672000C63A3 /* LGProgressHUD.h */,
 				BA7804AC216B0672000C63A3 /* LGProgressHUD.m */,
+				BA3B1AED25063233000E7E14 /* LGTipsAlertView.h */,
+				BA3B1AEE25063233000E7E14 /* LGTipsAlertView.m */,
 				BA7804B3216B07E2000C63A3 /* LGAlertHUD.h */,
 				BA7804B4216B07E2000C63A3 /* LGAlertHUD.m */,
 				BA91665F23509EF300A7F7C8 /* YJSheetView */,
@@ -402,6 +407,7 @@
 				BA53A52323C5AA590039CE89 /* YJAnswerAlertCell.m in Sources */,
 				BA7804A4216B0643000C63A3 /* YJAlertViewController.m in Sources */,
 				BA780457216B05A9000C63A3 /* main.m in Sources */,
+				BA3B1AEF25063233000E7E14 /* LGTipsAlertView.m in Sources */,
 				BA7804A3216B0643000C63A3 /* YJAlertViewHelper.m in Sources */,
 				BA91665E23509E0900A7F7C8 /* YJSheetView.m in Sources */,
 				BA53A52423C5AA590039CE89 /* YJAnswerAlertView.m in Sources */,

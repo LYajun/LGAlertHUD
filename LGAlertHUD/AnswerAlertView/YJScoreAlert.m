@@ -276,7 +276,7 @@
 - (void)setSmallTopicCount:(NSInteger)smallTopicCount{
     _smallTopicCount = smallTopicCount;
     
-    self.topicCountLab.text = [NSString stringWithFormat:@"共%li道大题，%li道小题",self.bigTopicCount,smallTopicCount];
+    self.topicCountLab.text = [NSString stringWithFormat:@"共%li道题，%li道小题",self.bigTopicCount,smallTopicCount];
 }
 - (void)addAnimation{
     CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];

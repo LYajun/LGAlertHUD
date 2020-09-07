@@ -46,6 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (YJLancooAlert *)lancooAlertGifViewWithGifName:(NSString *)gifName msg:(NSString *)msg duration:(NSInteger)duration;
 
+- (void)showOnView:(UIView *)view;
 - (void)show;
 - (void)hide;
 + (void)dismiss;

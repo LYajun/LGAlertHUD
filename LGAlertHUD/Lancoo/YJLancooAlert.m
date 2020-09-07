@@ -297,16 +297,15 @@
         }
     }
 }
-- (void)show{
-    UIWindow *rootWindow = [UIApplication sharedApplication].delegate.window;
-    for (UIView *view in rootWindow.subviews) {
-        if ([view isKindOfClass:[YJLancooAlert class]]) {
-            [(YJLancooAlert *)view hide];
+- (void)showOnView:(UIView *)view{
+    for (UIView *subview in view.subviews) {
+        if ([subview isKindOfClass:[YJLancooAlert class]]) {
+            [(YJLancooAlert *)subview hide];
         }
     }
-    [rootWindow addSubview:self.maskView];
-    [rootWindow addSubview:self];
-    self.center = rootWindow.center;
+    [view addSubview:self.maskView];
+    [view addSubview:self];
+    self.center = view.center;
     self.transform = CGAffineTransformConcat(CGAffineTransformIdentity,
                                              CGAffineTransformMakeScale(0.7f, 0.7f));
     self.alpha = 0.0f;
@@ -318,6 +317,10 @@
                                                      CGAffineTransformMakeScale(1.0f, 1.0f));
         weakSelf.alpha = 1.0f;
     }];
+    
+}
+- (void)show{
+    [self showOnView:[UIApplication sharedApplication].delegate.window];
 }
 - (void)hide{
     __weak typeof(self) weakSelf = self;
